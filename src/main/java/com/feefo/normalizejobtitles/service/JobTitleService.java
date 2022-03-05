@@ -40,7 +40,7 @@ public class JobTitleService {
         jobTitleDao.delete(jobTitle);
     }
 
-    public JobTitle normalizeTitle(String title){
+    public String normalizeTitle(String title){
         Normalizer n = new Normalizer(jobTitleDao);
         return n.normalize(title);
     }

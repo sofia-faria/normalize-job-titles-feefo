@@ -2,7 +2,6 @@ package com.feefo.normalizejobtitles.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity

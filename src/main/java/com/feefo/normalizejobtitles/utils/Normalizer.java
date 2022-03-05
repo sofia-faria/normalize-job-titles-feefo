@@ -14,23 +14,24 @@ public class Normalizer {
         this.jobTitleDao = jobTitleDao;
     }
 
-    //TESTAR
-    public JobTitle normalize(String title){
+    //should i assume that second word scores more? What about Engineer of Java?
+    public String normalize(String title){
         List<JobTitle> listNormalizedJobs = jobTitleDao.findAll();
         var q = 0.0; // quality score - if 0 not similar, if 1 equal
-        JobTitle normalizedTitle = listNormalizedJobs.get(0);
+        String normalizedTitle = title;
 
         for (JobTitle normalizedJob:listNormalizedJobs) {
             var score = 0.0;
-            String[] jobs = normalizedJob.getJob().split(" ");
+            var job = normalizedJob.getJob();
+            String[] jobs = job.split(" ");
             for(String str: jobs){
-                if(title.contains(str)){
+                if(title.toLowerCase().contains(str.toLowerCase())){
                     score += 0.5;
                 }
             }
             if(q < score){
                 q = score;
-                normalizedTitle = normalizedJob;
+                normalizedTitle = job;
             }
         }
 
