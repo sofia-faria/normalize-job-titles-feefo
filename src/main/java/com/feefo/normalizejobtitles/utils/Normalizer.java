@@ -21,7 +21,7 @@ public class Normalizer {
         JobTitle normalizedTitle = listNormalizedJobs.get(0);
 
         for (JobTitle normalizedJob:listNormalizedJobs) {
-            var score = 0;
+            var score = 0.0;
             String[] jobs = normalizedJob.getJob().split(" ");
             for(String str: jobs){
                 if(title.contains(str)){
