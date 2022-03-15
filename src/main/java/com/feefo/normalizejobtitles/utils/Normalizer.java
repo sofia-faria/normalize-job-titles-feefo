@@ -5,6 +5,7 @@ import com.feefo.normalizejobtitles.repository.JobTitleDao;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.List;
+import java.util.Optional;
 
 public class Normalizer {
 
@@ -14,8 +15,7 @@ public class Normalizer {
         this.jobTitleDao = jobTitleDao;
     }
 
-    //should i assume that second word scores more? What about Engineer of Java?
-    public String normalize(String title){
+    public Optional<JobTitle> normalize(String title){
         List<JobTitle> listNormalizedJobs = jobTitleDao.findAll();
         var q = 0.0; // quality score - if 0 not similar, if 1 equal
         String normalizedTitle = title;
@@ -35,8 +35,7 @@ public class Normalizer {
             }
         }
 
-
-        return normalizedTitle;
+        return jobTitleDao.findByJob(normalizedTitle);
     }
 
 
