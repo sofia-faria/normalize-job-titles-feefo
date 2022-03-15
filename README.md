@@ -12,5 +12,5 @@ Setup para dev:
 
 Test APIs:
   - To normalize string use URL "api/jobtitle/normalize" with BODY: 
-    - {"job":"Java engineer"} (example)
+    - Example: {"job":"Java engineer"}
   - You can also test the other CRUD operations (path "api/jobtitle")
